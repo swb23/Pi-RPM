@@ -91,14 +91,14 @@ def main():
     global aufloesungzm
     global aufloesung
     print('Datenbank erfolgreich geöffnet')
-    aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts eingeben: '))
-    aufloesung=int(input('Bitte die gewuenschte Aufloesung eingeben: '))
+    aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts in Sekunden eingeben: '))
+    aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
     GPIO.add_event_detect(17, GPIO.FALLING, callback=signalerkennung)   
     try:
         # Loop until users quits with CTRL-C
         while True:
-           time.sleep(0.1)
+           time.sleep(0.01)
         
     except KeyboardInterrupt:
         # Reset GPIO settings
