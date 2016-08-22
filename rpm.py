@@ -10,6 +10,8 @@ Listen Durchschnitt bilden und Lise anpassen
 # Import required libraries
 import datetime as dt
 import RPi.GPIO as GPIO
+import MySQLdb
+import time
 
 #Globale Variablen setzten
 global aufloesung 
