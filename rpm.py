@@ -87,7 +87,7 @@ def main():
     global abtastrate
     print('Datenbank erfolgreich geöffnet')
     aufloesung=int(input('Bitte die gewuenschte Aufloesung der Daten in Sekunden eingeben: '))
-    abtastrate=0.01*int(input('Bitte die gewuenschte Abtastrate in Sekunden eingeben: ')) 
+    abtastrate=int(input('Bitte die gewuenschte Abtastrate in Sekunden eingeben: ')) 
     try:
         # Loop until users quits with CTRL-C    
         while True:
