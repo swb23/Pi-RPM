@@ -32,6 +32,7 @@ GPIO.setup(17 , GPIO.IN)
 #erkennt ob an dem GPIO HIGH oder LOW anliegt    
 def signalerkennung():
         signal=GPIO.input(17)
+        print(str(signal))
         return signal
    
     # Ermittelt aus den Messdaten des Sensors einen 
@@ -40,6 +41,7 @@ def mittelwertmessung():
     i=0
     while i<aufloesung*100:
         signal=signalerkennung()
+        print(str(signal))
         if signal==1:
             zws.append(1)
         else: 
