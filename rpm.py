@@ -38,14 +38,17 @@ def signalerkennung():
     # Durchschnittswert für die Dauer der Aufloesung     
 def mittelwertmessung():
     i=0
+    signal2=3
     while i<aufloesung:
         signal=signalerkennung()
-        print(str(signal))
-        if signal==0:
+        signal2=signal
+        if signal!=signal2:
             zws.append(1)
         else: 
             zws.append(0)
         i=i+abtastrate
+        signal2=signal
+        print(str(i))
         time.sleep(abtastrate)
     
     l=len(zws)
