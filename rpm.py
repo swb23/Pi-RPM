@@ -41,14 +41,13 @@ def mittelwertmessung():
     signal2=3
     while i<aufloesung:
         signal=signalerkennung()
-        signal2=signal
         if signal!=signal2:
             zws.append(1)
         else: 
             zws.append(0)
         i=i+abtastrate
         signal2=signal
-        print(str(i))
+        print(str(i)+ '  das aufgenommene Signal ist'+ str(signal) )
         time.sleep(abtastrate)
     
     l=len(zws)
