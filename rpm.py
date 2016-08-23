@@ -50,7 +50,7 @@ def mittelwertmessung():
     
     l=len(zws)
     s=sum(zws)
-    rpm=int((60/aufloesung)*(s/l))
+    rpm=int((60/aufloesung)*(s))
     del zws[:]  
     print('Die akutelle Umdrehungszahl pro Minute betärgt:' + str(rpm) )       
     speichern(rpm)    
