@@ -27,11 +27,11 @@ db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine
 GPIO.setmode(GPIO.BCM) 
 
 # Setzt Pin 17 als Inut
-GPIO.setup(17 , GPIO.IN)
+GPIO.setup(27 , GPIO.IN)
 
 #erkennt ob an dem GPIO HIGH oder LOW anliegt    
 def signalerkennung():
-        signal=GPIO.input(17)
+        signal=GPIO.input(27)
         print(str(signal))
         return signal
    
@@ -39,10 +39,10 @@ def signalerkennung():
     # Durchschnittswert für die Dauer der Aufloesung     
 def mittelwertmessung():
     i=0
-    while i<aufloesung*100:
+    while i<aufloesung:
         signal=signalerkennung()
         print(str(signal))
-        if signal==1:
+        if signal==0:
             zws.append(1)
         else: 
             zws.append(0)
@@ -86,7 +86,7 @@ def main():
     global aufloesung
     global abtastrate
     print('Datenbank erfolgreich geöffnet')
-    aufloesung=0.01*int(input('Bitte die gewuenschte Aufloesung der Daten in Sekunden eingeben: '))
+    aufloesung=int(input('Bitte die gewuenschte Aufloesung der Daten in Sekunden eingeben: '))
     abtastrate=int(input('Bitte die gewuenschte Abtastrate je Sekunden eingeben: ')) 
     try:
         # Loop until users quits with CTRL-C    
