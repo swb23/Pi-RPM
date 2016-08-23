@@ -32,7 +32,6 @@ GPIO.setup(27 , GPIO.IN)
 #erkennt ob an dem GPIO HIGH oder LOW anliegt    
 def signalerkennung():
         signal=GPIO.input(27)
-        print(str(signal))
         return signal
    
     # Ermittelt aus den Messdaten des Sensors einen 
