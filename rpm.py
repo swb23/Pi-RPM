@@ -83,6 +83,7 @@ def speichern(rpm):
         db.commit()   
    
 def main():
+    time.sleep(30)
     global rpm
     global aufloesung
     global abtastrate
