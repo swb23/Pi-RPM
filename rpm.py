@@ -15,11 +15,11 @@ import time
 
 #Globale Variablen setzten
 global aufloesung 
-aufloesung=1 #legt die Messaufloesung in Sekunden fest
+aufloesung=10 #legt die Messaufloesung in Sekunden fest
 global zws  
 zws=[]
 global abtastrate #legt die Abtastrate in 0,01 sekunden fest
-abtastrate=0.01
+abtastrate=1
 global db
 db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
 
