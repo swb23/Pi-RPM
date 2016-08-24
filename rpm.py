@@ -19,7 +19,7 @@ aufloesung=1 #legt die Messaufloesung in Sekunden fest
 global zws  
 zws=[]
 global abtastrate #legt die Abtastrate in 0,01 sekunden fest
-abtastrate=10
+abtastrate=0.01
 global db
 db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
 
@@ -87,8 +87,8 @@ def main():
     global aufloesung
     global abtastrate
     print('Datenbank erfolgreich geöffnet')
-    aufloesung=int(input('Bitte die gewuenschte Aufloesung der Daten in Sekunden eingeben: '))
-    abtastrate=0.01*int(input('Bitte die gewuenschte Abtastrate je Sekunden *0,01 eingeben(Bsp: 100=1 s): ')) 
+    #aufloesung=int(input('Bitte die gewuenschte Aufloesung der Daten in Sekunden eingeben: '))
+    #abtastrate=0.01*int(input('Bitte die gewuenschte Abtastrate je Sekunden *0,01 eingeben(Bsp: 100=1 s): ')) 
     try:
         # Loop until users quits with CTRL-C    
         while True:
