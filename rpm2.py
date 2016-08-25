@@ -21,11 +21,10 @@ aufloesung=1 #legt die Messaufloesung in Sekunden fest
 global aufloesungzm     #Dauer der Zeit, über die der gleitende Mittelwert gebildet wird
 aufloesungzm=5
 global anzahlsensoren
-anzahlsensoren=2
+anzahlsensoren=1
 global zws  
 zws=[]
 global db
-db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
 
 
 # Teilt der GPIO Bibliotek mit die GPIO references zu nutzen
@@ -87,12 +86,15 @@ def speichern(rpm):
 
 
 def main():
+    time.sleep(5)
     global rpm
     global aufloesungzm
     global aufloesung
-    print('Datenbank erfolgreich geöffnet')
-    aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts in Sekunden eingeben: '))
-    aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
+    global db
+    db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
+    #print('Datenbank erfolgreich geöffnet')
+    #aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts in Sekunden eingeben: '))
+    #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
     GPIO.add_event_detect(17, GPIO.FALLING, callback=signalerkennung)   
     try:
