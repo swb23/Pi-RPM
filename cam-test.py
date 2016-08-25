@@ -7,7 +7,7 @@ import time
 camera = picamera.PiCamera(resolution=(1024, 768), framerate=24)
 camera.annotate_background = picamera.Color('black')
 camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-now=dt.strtime()
+now=time.strtime()
 print(now)
 filename=str(now + '.h264')
 camera.start_recording(filename)
