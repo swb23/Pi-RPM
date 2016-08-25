@@ -13,7 +13,7 @@ try:
     while True:
           camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
           filename=(dt.datetime.now().strftime('%Y%m%d_%H-%M-%S')+ '.h264')
-          camera.start_recording('media/usb/'+filename)
+          camera.start_recording('/media/usb/'+filename)
           start = dt.datetime.now()
           while True:
                camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
