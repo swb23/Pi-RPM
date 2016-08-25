@@ -1,10 +1,11 @@
 import picamera
 import datetime as dt
 
-camera = picamera.PiCamera(resolution=(1280, 720), framerate=10)
+camera = picamera.PiCamera(resolution=(1024, 768), framerate=24)
 camera.annotate_background = picamera.Color('black')
 camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-camera.start_recording('timestamped.h264')
+a='timestamped.h264'
+camera.start_recording(a)
 start = dt.datetime.now()
 while (dt.datetime.now() - start).seconds < 30:
     camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
