@@ -75,6 +75,7 @@ def mittelwertmessung():
     return int(rpm)
     '''
 def speichern(rpm):
+        global db
         db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
         curs=db.cursor()
         curs.execute("""INSERT INTO Umdrehungen (zeitstempel, rpm) VALUES (NOW(), '%s')""" %(rpm) )
