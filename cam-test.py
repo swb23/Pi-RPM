@@ -15,7 +15,7 @@ try:
           filename=(dt.datetime.now().strftime('%Y%m%d_%H-%M-%S')+ '.h264')
           camera.start_recording(filename)
           start = dt.datetime.now()
-          while (dt.datetime.now() - start).seconds < 100:
+          while True:
                camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                camera.wait_recording(0.2)
 except KeyboardInterrupt:
