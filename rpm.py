@@ -20,8 +20,6 @@ global zws
 zws=[]
 global abtastrate #legt die Abtastrate in 0,01 sekunden fest
 abtastrate=1
-global db
-db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
 
 # Teilt der GPIO Bibliotek mit die GPIO references zu nutzen
 GPIO.setmode(GPIO.BCM) 
@@ -77,6 +75,7 @@ def mittelwertmessung():
     return int(rpm)
     '''
 def speichern(rpm):
+        db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
         curs=db.cursor()
         curs.execute("""INSERT INTO Umdrehungen (zeitstempel, rpm) VALUES (NOW(), '%s')""" %(rpm) )
         curs.close()
