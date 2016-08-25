@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import picamera
 import datetime as dt
+import time
 
 camera = picamera.PiCamera(resolution=(1024, 768), framerate=24)
 camera.annotate_background = picamera.Color('black')
