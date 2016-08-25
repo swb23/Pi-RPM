@@ -15,11 +15,11 @@ import time
 
 #Globale Variablen setzten
 global aufloesung 
-aufloesung=10 #legt die Messaufloesung in Sekunden fest
+aufloesung=1 #legt die Messaufloesung in Sekunden fest
 global zws  
 zws=[]
 global abtastrate #legt die Abtastrate in 0,01 sekunden fest
-abtastrate=1
+abtastrate=0.01
 
 # Teilt der GPIO Bibliotek mit die GPIO references zu nutzen
 GPIO.setmode(GPIO.BCM) 
