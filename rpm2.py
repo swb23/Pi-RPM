@@ -14,6 +14,7 @@ import time
 import MySQLdb
 import sys
 import threading
+import picamera
 
 #Globale Variablen setzten
 global aufloesung 
@@ -46,7 +47,27 @@ class timer(threading.Thread):
             
             print(rpm)
             speichern(rpm)
-            
+
+class cam(treading.Thread):
+	def __init__(self):
+		threading.Thread.__init__(self)
+		self.daemon=True
+		self.start()
+	def run(self):
+		while True:
+			camera=picamera.PiCamera()
+			camera.resolution = (1024, 768)
+			camera.framerate= (20)
+			
+			camera.annotate_background = picamera.Color('black')
+			camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+			camera.start_recording('WendelS.h264')
+			start = dt.datetime.now()
+			while (dt.datetime.now() - start).seconds < 30:
+			    camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+			    camera.wait_recording(0.2)
+			
+			
        
     # Ermittelt aus den Messdaten des Sensors einen Durchschnittswert für die Dauer der Aufloesung     
 def mittelwert():
@@ -84,9 +105,9 @@ def speichern(rpm):
         curs.close()
         db.commit()   
 
-
 def main():
     time.sleep(5)
+    cameraopen()
     global rpm
     global aufloesungzm
     global aufloesung
