@@ -7,9 +7,7 @@ import time
 camera = picamera.PiCamera(resolution=(1024, 768), framerate=24)
 camera.annotate_background = picamera.Color('black')
 camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-now=time.strtime()
-print(now)
-filename=str(now + '.h264')
+filename=(dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')+ '.h264')
 camera.start_recording(filename)
 start = dt.datetime.now()
 while (dt.datetime.now() - start).seconds < 30:
