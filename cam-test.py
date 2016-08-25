@@ -1,8 +1,7 @@
 import picamera
 import datetime as dt
 
-camera = picamera.PiCamera(resolution=(1280, 720), framerate=24)
-camera.start_preview()
+camera = picamera.PiCamera(resolution=(1280, 720), framerate=10)
 camera.annotate_background = picamera.Color('black')
 camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 camera.start_recording('timestamped.h264')
