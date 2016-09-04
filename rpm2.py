@@ -86,7 +86,7 @@ def speichern(rpm):
 
 
 def main():
-    time.sleep(5)
+    time.sleep(10)
     global rpm
     global aufloesungzm
     global aufloesung
