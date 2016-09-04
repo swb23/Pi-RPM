@@ -68,7 +68,7 @@ def mittelwert():
          rpm=0
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
 	 rpm=int(len(zws)*30)
-    print('Die akutelle Umdrehungszahl pro Minute betärgt:')
+   # print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
     
    
