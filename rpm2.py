@@ -19,7 +19,7 @@ import threading
 global aufloesung 
 aufloesung=1 #legt die Messaufloesung in Sekunden fest
 global aufloesungzm     #Dauer der Zeit, über die der gleitende Mittelwert gebildet wird
-aufloesungzm=5
+aufloesungzm=2
 global anzahlsensoren
 anzahlsensoren=1
 global zws  
