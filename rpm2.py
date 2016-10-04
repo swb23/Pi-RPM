@@ -21,7 +21,7 @@ aufloesung=1 #legt die Messaufloesung in Sekunden fest
 global aufloesungzm     #Dauer der Zeit, über die der gleitende Mittelwert gebildet wird
 aufloesungzm=2
 global anzahlsensoren
-anzahlsensoren=1
+anzahlsensoren=2
 global zws  
 zws=[]
 global db
@@ -91,12 +91,13 @@ def main():
     global aufloesungzm
     global aufloesung
     global db
-    db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
+    #db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
     #print('Datenbank erfolgreich geöffnet')
     #aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts in Sekunden eingeben: '))
     #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
-    GPIO.add_event_detect(17, GPIO.FALLING, callback=signalerkennung)   
+    GPIO.add_event_detect(17, GPIO.FALLING, callback=signalerkennung)
+    GPIO.add_event_detect(17, GPIO.RISING, callback=signalerkennung) 
     try:
         # Loop until users quits with CTRL-C
         while True:
@@ -108,6 +109,9 @@ def main():
         GPIO.cleanup()
     
         
-if __name__ == '__main__':   
-    main()
+if __name__ == '__main__':
+   global db
+   db=MySQLdb.connect(host='localhost', user='verlauf', passwd='Turby', db='turbine')
+   #print('Datenbank erfolgreich geöffnet')   
+   main()
             
