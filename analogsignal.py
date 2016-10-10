@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 #Python Timerklasse importieren
 import time
 #Python Raspberry Pi GPIO Klasse importieren
