@@ -77,6 +77,11 @@ def signalerkennung(channel):
     global zws
     t0=dt.datetime.now()
     zws.append(t0) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu
+
+def signalerkennung2(channel):
+    global zws
+    t0=dt.datetime.now()
+    zws.append(t0) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu
         
 def speichern(rpm):
         curs=db.cursor()
@@ -97,7 +102,7 @@ def main():
     #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
     GPIO.add_event_detect(17, GPIO.FALLING, callback=signalerkennung)
-    GPIO.add_event_detect(17, GPIO.RISING, callback=signalerkennung) 
+    GPIO.add_event_detect(17, GPIO.RISING, callback=signalerkennung2) 
     try:
         # Loop until users quits with CTRL-C
         while True:
