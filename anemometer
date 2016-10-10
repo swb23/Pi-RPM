@@ -29,8 +29,8 @@ global db
 # Teilt der GPIO Bibliotek mit die GPIO references zu nutzen
 GPIO.setmode(GPIO.BCM)
 
-# Setzt Pin 17 als Inut
-GPIO.setup(17 , GPIO.IN)
+# Setzt Pin 27 als Inut
+GPIO.setup(27 , GPIO.IN)
 
 class timer(threading.Thread):
     def __init__(self):
@@ -79,7 +79,7 @@ def signalerkennung(channel):
         
 def speichern(rpm):
         curs=db.cursor()
-        curs.execute("""INSERT INTO Umdrehungen (zeitstempel, rpm) VALUES (NOW(), '%s')""" %(rpm) )
+        curs.execute("""INSERT INTO Umdrehungen (zeitstempel, wind) VALUES (NOW(), '%s')""" %(rpm) )
         curs.close()
         db.commit()   
 
@@ -95,7 +95,7 @@ def main():
     #aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts in Sekunden eingeben: '))
     #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
-    GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung)
+    GPIO.add_event_detect(27, GPIO.BOTH, callback=signalerkennung)
     try:
         # Loop until users quits with CTRL-C
         while True:
