@@ -60,10 +60,8 @@ def signalerkennung2(channel): # Anemometer (wind)
     zws2.append(t20) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu        
        
     # Ermittelt aus den Messdaten des Sensors einen Durchschnittswert für die Dauer der Aufloesung  
-class counter:
-    def __init__(self):
-           
-    def mittelwert(zws):
+class counter:          
+    def mittelwert(self, zws):
         t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
         while True:
             if len(zws)==0:
