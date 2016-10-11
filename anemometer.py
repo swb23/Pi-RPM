@@ -46,7 +46,7 @@ class timer(threading.Thread):
         while True:
             time.sleep(aufloesung)
             turbinerpm=mittelwert1()
-            windrpm=mittelwert2()
+           # windrpm=mittelwert2()
             print("Turbinenrpm: " + str(turbinerpm) + "/ Windgeschwindigkeit: " + str(windrpm))
             speichern(turbinerpm, windrpm)
 
@@ -55,12 +55,12 @@ def signalerkennung1(channel): # Turbine
     global zws1
     t10=dt.datetime.now()
     zws1.append(t10) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu
-    
+'''    
 def signalerkennung2(channel): # Anemometer (wind)
     global zws2
     t20=dt.datetime.now()
     zws2.append(t20) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu        
-       
+'''       
     # Ermittelt aus den Messdaten des Sensors einen Durchschnittswert für die Dauer der Aufloesung  
 def mittelwert1():
     global zws1
@@ -83,7 +83,7 @@ def mittelwert1():
         rpm=int(len(zws1)*30)
     print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
-
+'''
 def mittelwert2():
     global zws2
     t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
@@ -105,7 +105,7 @@ def mittelwert2():
         rpm=int(len(zws2)*30)
     print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
-        
+'''       
 def speichern(turbinerpm, windrpm):
         curs=db.cursor()
         curs.execute("""INSERT INTO Umdrehungen (zeitstempel,rpm , wind) VALUES (NOW(), '%s', '%s')""" %(turbinerpm, windrpm) )
