@@ -46,8 +46,7 @@ class timer(threading.Thread):
         while True:
             time.sleep(aufloesung)
             turbinerpm=mittelwert1()
-            windrpm=3
-           # windrpm=mittelwert2()
+            windrpm=mittelwert2()
             print("Turbinenrpm: " + str(turbinerpm) + "/ Windgeschwindigkeit: " + str(windrpm))
             speichern(turbinerpm, windrpm)
 
@@ -56,12 +55,12 @@ def signalerkennung1(channel): # Turbine
     global zws1
     t10=dt.datetime.now()
     zws1.append(t10) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu
-'''    
+  
 def signalerkennung2(channel): # Anemometer (wind)
     global zws2
     t20=dt.datetime.now()
     zws2.append(t20) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu        
-'''       
+     
     # Ermittelt aus den Messdaten des Sensors einen Durchschnittswert für die Dauer der Aufloesung  
 def mittelwert1():
     global zws1
@@ -84,7 +83,7 @@ def mittelwert1():
         rpm=int(len(zws1)*30)
     print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
-'''
+
 def mittelwert2():
     global zws2
     t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
@@ -95,7 +94,7 @@ def mittelwert2():
             del zws2[0]
         else:
             break
-    n=len(zws1)
+    n=len(zws2)
     if n>1:     # Berechnet den zeitlichen Abstand zwischen dem ersten und letztem Messwert und berechnet die Umdrehung pro Minute
         dauer=zws2[n-1]-zws2[0]
         rpm=int( (60/dt.timedelta.total_seconds(dauer))*(n/anzahlsensoren))
@@ -106,7 +105,7 @@ def mittelwert2():
         rpm=int(len(zws2)*30)
     print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
-'''       
+       
 def speichern(turbinerpm, windrpm):
         curs=db.cursor()
         curs.execute("""INSERT INTO Umdrehungen (zeitstempel,rpm , wind) VALUES (NOW(), '%s', '%s')""" %(turbinerpm, windrpm) )
@@ -122,7 +121,7 @@ def main():
     #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
     GPIO.add_event_detect(27, GPIO.BOTH, callback=signalerkennung1, bouncetime=100)
-    #GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung2, bouncetime=100)
+    GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung2, bouncetime=100)
     try:
         # Loop until users quits with CTRL-C
         while True:
