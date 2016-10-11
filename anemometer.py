@@ -45,8 +45,8 @@ class timer(threading.Thread):
     def run(self):
         while True:
             time.sleep(aufloesung)
-            turbinerpm=counter.mittelwert(zws1)
-            windrpm=counter.mittelwert(zws2)
+            turbinerpm=mittelwert1()
+            windrpm=mittelwert2()
             print(rpm)
             speichern(turbinerpm, windrpm)
 
@@ -62,28 +62,49 @@ def signalerkennung2(channel): # Anemometer (wind)
     zws2.append(t20) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu        
        
     # Ermittelt aus den Messdaten des Sensors einen Durchschnittswert für die Dauer der Aufloesung  
-class counter:          
-    def mittelwert(self, zws):
-        t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
-        while True:
-            if len(zws)==0:
-                break   # Loescht alle Werte die aelter als die dauer der Aufloesung sind
-            elif t1>=zws[0]:
-                del zws[0]
-            else:
-                break
-        n=len(zws)
-        if n>1:     # Berechnet den zeitlichen Abstand zwischen dem ersten und letztem Messwert und berechnet die Umdrehung pro Minute
-            dauer=zws[n-1]-zws[0]
-            rpm=int( (60/dt.timedelta.total_seconds(dauer))*(n/anzahlsensoren))
-    	       # rpm=int(dt.timedelta.total_seconds(dauer)*n)
-        elif n==0:
-             rpm=0
-        else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
-            rpm=int(len(zws)*30)
-        print('Die akutelle Umdrehungszahl pro Minute betärgt:')
-        return rpm
-    
+def mittelwert1(zws1):
+    global zws1
+    t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
+    while True:
+        if len(zws1)==0:
+            break   # Loescht alle Werte die aelter als die dauer der Aufloesung sind
+        elif t1>=zws1[0]:
+            del zws1[0]
+        else:
+            break
+    n=len(zws1)
+    if n>1:     # Berechnet den zeitlichen Abstand zwischen dem ersten und letztem Messwert und berechnet die Umdrehung pro Minute
+        dauer=zws1[n-1]-zws1[0]
+        rpm=int( (60/dt.timedelta.total_seconds(dauer))*(n/anzahlsensoren))
+	       # rpm=int(dt.timedelta.total_seconds(dauer)*n)
+    elif n==0:
+         rpm=0
+    else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
+        rpm=int(len(zws1)*30)
+    print('Die akutelle Umdrehungszahl pro Minute betärgt:')
+    return rpm
+
+def mittelwert2(zws2):
+    global zws2
+    t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
+    while True:
+        if len(zws2)==0:
+            break   # Loescht alle Werte die aelter als die dauer der Aufloesung sind
+        elif t1>=zws2[0]:
+            del zws2[0]
+        else:
+            break
+    n=len(zws1)
+    if n>1:     # Berechnet den zeitlichen Abstand zwischen dem ersten und letztem Messwert und berechnet die Umdrehung pro Minute
+        dauer=zws2[n-1]-zws2[0]
+        rpm=int( (60/dt.timedelta.total_seconds(dauer))*(n/anzahlsensoren))
+           # rpm=int(dt.timedelta.total_seconds(dauer)*n)
+    elif n==0:
+         rpm=0
+    else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
+        rpm=int(len(zws2)*30)
+    print('Die akutelle Umdrehungszahl pro Minute betärgt:')
+    return rpm
         
 def speichern(turbinerpm, windrpm):
         curs=db.cursor()
