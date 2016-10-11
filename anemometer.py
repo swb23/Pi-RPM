@@ -121,7 +121,7 @@ def main():
     #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
     GPIO.add_event_detect(27, GPIO.BOTH, callback=signalerkennung1, bouncetime=100)
-    GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung2, bouncetime=100)
+    #GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung2, bouncetime=100)
     try:
         # Loop until users quits with CTRL-C
         while True:
