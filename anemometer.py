@@ -72,13 +72,13 @@ class counter:
                 break
         n=len(zws)
         if n>1:     # Berechnet den zeitlichen Abstand zwischen dem ersten und letztem Messwert und berechnet die Umdrehung pro Minute
-    	dauer=zws[n-1]-zws[0]
-    	rpm=int( (60/dt.timedelta.total_seconds(dauer))*(n/anzahlsensoren))
+        dauer=zws[n-1]-zws[0]
+        rpm=int( (60/dt.timedelta.total_seconds(dauer))*(n/anzahlsensoren))
     	       # rpm=int(dt.timedelta.total_seconds(dauer)*n)
         elif n==0:
              rpm=0
         else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
-    	 rpm=int(len(zws)*30)
+            rpm=int(len(zws)*30)
         print('Die akutelle Umdrehungszahl pro Minute betärgt:')
         return rpm
     
