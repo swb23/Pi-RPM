@@ -47,7 +47,7 @@ class timer(threading.Thread):
             time.sleep(aufloesung)
             turbinerpm=mittelwert1()
             windrpm=mittelwert2()
-            print("Turbinenrpm: " + turbinerpm + "/ Windgeschwindigkeit: " + windrpm)
+            print("Turbinenrpm: " + str(turbinerpm) + "/ Windgeschwindigkeit: " + str(windrpm))
             speichern(turbinerpm, windrpm)
 
 
