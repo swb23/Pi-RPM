@@ -22,8 +22,10 @@ global aufloesungzm     #Dauer der Zeit, über die der gleitende Mittelwert gebi
 aufloesungzm=2
 global anzahlsensoren
 anzahlsensoren=2
-global zws  
-zws=[]
+global zws1  
+zws1=[]
+global zws2  
+zws2=[]
 global db
 
 
