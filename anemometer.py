@@ -4,6 +4,7 @@
 Created on 21.07.2016
 @author: Sander
 Listen Durchschnitt bilden und Lise anpassen
+test
 '''
 
 # Importiert die benoetigten Bibliotekne
