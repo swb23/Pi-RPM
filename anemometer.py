@@ -62,7 +62,7 @@ def signalerkennung2(channel): # Anemometer (wind)
     zws2.append(t20) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu        
        
     # Ermittelt aus den Messdaten des Sensors einen Durchschnittswert für die Dauer der Aufloesung  
-def mittelwert1(zws1):
+def mittelwert1():
     global zws1
     t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
     while True:
@@ -84,7 +84,7 @@ def mittelwert1(zws1):
     print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
 
-def mittelwert2(zws2):
+def mittelwert2():
     global zws2
     t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
     while True:
