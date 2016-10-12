@@ -53,6 +53,7 @@ class timer(threading.Thread):
 
 def signalerkennung1(channel): # Turbine
     global zws1
+    print("Turbinen signal erkannt")
     t10=dt.datetime.now()
     zws1.append(t10) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu
   
