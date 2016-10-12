@@ -104,7 +104,7 @@ def mittelwert2():
          rpm=0
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
         rpm=int(len(zws2)*30)
-    rpm=rpm*1000/(3.14*43*2)
+    rpm=rpm*1000/(3.14*43*2)/60
     return rpm
        
 def speichern(turbinerpm, windrpm):
@@ -121,8 +121,8 @@ def main():
     #aufloesungzm=int(input('Bitte den gewuenschten Zeitraum zum ermitteln des gleitenden Durchschnitts in Sekunden eingeben: '))
     #aufloesung=int(input('Bitte die gewuenschte Aufloesung in Sekunden eingeben: '))
     t1=timer()
-    GPIO.add_event_detect(27, GPIO.BOTH, callback=signalerkennung1)
-    GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung2)
+    GPIO.add_event_detect(27, GPIO.BOTH, callback=signalerkennung1, bouncetime=200)
+    GPIO.add_event_detect(17, GPIO.BOTH, callback=signalerkennung2, bouncetime=200)
     try:
         # Loop until users quits with CTRL-C
         while True:
