@@ -58,6 +58,7 @@ def signalerkennung1(channel): # Turbine
   
 def signalerkennung2(channel): # Anemometer (wind)
     global zws2
+    print("Windsignal erkannt")
     t20=dt.datetime.now()
     zws2.append(t20) #fuegt den akutellen Timestamp dem Zwischenspeicher für die Timestamps hinzu        
      
@@ -81,7 +82,6 @@ def mittelwert1():
          rpm=0
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
         rpm=int(len(zws1)*30)
-    print('Die akutelle Umdrehungszahl pro Minute betärgt:')
     return rpm
 
 def mittelwert2():
@@ -103,8 +103,7 @@ def mittelwert2():
          rpm=0
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
         rpm=int(len(zws2)*30)
-    print('Die akutelle Umdrehungszahl pro Minute betärgt:')
-    rpm=rpm*3.14*43*2/1000
+    rpm=rpm*1000/(3.14*43*2)
     return rpm
        
 def speichern(turbinerpm, windrpm):
