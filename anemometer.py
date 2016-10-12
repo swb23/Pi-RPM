@@ -104,6 +104,7 @@ def mittelwert2():
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
         rpm=int(len(zws2)*30)
     print('Die akutelle Umdrehungszahl pro Minute betärgt:')
+    rpm=rpm*3,14*43*2*1/1000
     return rpm
        
 def speichern(turbinerpm, windrpm):
