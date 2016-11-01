@@ -85,6 +85,7 @@ def mittelwert1():
         rpm=int(len(zws1)*30)
     return rpm
 
+#Berechnet die Windgeschwindigkeit
 def mittelwert2():
     global zws2
     t1=dt.datetime.now()-dt.timedelta(0,aufloesungzm)
@@ -105,11 +106,11 @@ def mittelwert2():
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
         rpm=int(len(zws2)*30)
     rpm=rpm*1000/(3.14*43*2)/60
-    return rpm
+    return windrpm
        
 def speichern(turbinerpm, windrpm):
         curs=db.cursor()
-        curs.execute("""INSERT INTO Umdrehungen (zeitstempel,rpm , wind) VALUES (NOW(), '%s', '%s')""" %(turbinerpm, windrpm) )
+        curs.execute("""INSERT INTO Umdrehungen (zeitstempel,rpm,wind) VALUES (NOW(), '%s', '%s')""" %(turbinerpm, windrpm) )
         curs.close()
         db.commit()   
 
