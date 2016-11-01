@@ -106,7 +106,7 @@ def mittelwert2():
     else:       # notwenig, da dauer für den ersten Wert 0 ist und man nicht durch 0 teilen darf
         rpm=int(len(zws2)*30)
     rpm=rpm*1000/(3.14*43*2)/60
-    return windrpm
+    return rpm
        
 def speichern(turbinerpm, windrpm):
         curs=db.cursor()
