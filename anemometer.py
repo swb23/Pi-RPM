@@ -3,8 +3,7 @@
 '''
 Created on 21.07.2016
 @author: Sander
-Listen Durchschnitt bilden und Lise anpassen
-test 2
+Measure and save to a database the RPM of a windturbine and anemometer
 '''
 
 # Importiert die benoetigten Bibliotekne
